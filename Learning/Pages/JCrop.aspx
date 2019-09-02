@@ -11,7 +11,7 @@
 <body>
     <form id="form1" runat="server">
         <div>
-            <asp:Panel ID="pnlUpload" runat="server">
+            <asp:Panel ID="pnlUpload" runat="server">a
 
                 <asp:FileUpload ID="Upload" runat="server" />
 
