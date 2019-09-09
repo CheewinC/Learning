@@ -104,6 +104,7 @@
     <Content Include="Content\jquery.Jcrop.css" />
     <Content Include="Content\jquery.Jcrop.min.css" />
     <Content Include="Pages\ExcelEPPlus.aspx" />
+    <Content Include="Pages\FacebookCallback.aspx" />
     <Content Include="Pages\FacebookLogin.aspx" />
     <Content Include="Pages\JCrop.aspx" />
     <Content Include="Pages\LineBot.aspx" />
@@ -165,6 +166,13 @@
     <Compile Include="Pages\ExcelEPPlus.aspx.designer.cs">
       <DependentUpon>ExcelEPPlus.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Pages\FacebookCallback.aspx.cs">
+      <DependentUpon>FacebookCallback.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Pages\FacebookCallback.aspx.designer.cs">
+      <DependentUpon>FacebookCallback.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Pages\FacebookLogin.aspx.cs">
       <DependentUpon>FacebookLogin.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -172,6 +180,7 @@
     <Compile Include="Pages\FacebookLogin.aspx.designer.cs">
       <DependentUpon>FacebookLogin.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Pages\fbCallBackController.cs" />
     <Compile Include="Pages\JCrop.aspx.cs">
       <DependentUpon>JCrop.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
