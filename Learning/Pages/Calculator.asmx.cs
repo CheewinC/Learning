@@ -20,7 +20,7 @@ namespace Learning.Pages
         [WebMethod]
         public int Sum(int a,int b)
         {
-            return a+b;
+            return a+b+1;
         }
     }
 }
