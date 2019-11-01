@@ -25,8 +25,8 @@ namespace LearningLineBotApp.Properties {
         
         [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("CLuc3B+qzeEyQmcFTsfmeUavnzpNawYxwb/Pc0rGQjcMpmhHvIePz1N9QVYjCywKZ9Rn5vQLKMf2dyr8o" +
-            "Qc1HxsM20JpOQbILkaqHBnls3eNAXkFDfIp8on2vL0Ls8/V/yPdoZufm1OKOPCBIn0s7gdB04t89/1O/" +
+        [global::System.Configuration.DefaultSettingValueAttribute("zdS4xMEmH0A5YsNHtJ8LYbqQFVb1e1HThquZFVpkL5W8D9cTLlOI+jsq2ZlWCGu8Z9Rn5vQLKMf2dyr8o" +
+            "Qc1HxsM20JpOQbILkaqHBnls3f+dHdZHRmNek+E1m7gexZgq7oBODYoFzIbJo5gBwOm/gdB04t89/1O/" +
             "w1cDnyilFU=")]
         public string accessToken {
             get {

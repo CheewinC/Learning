@@ -96,9 +96,30 @@
     <Reference Include="LineBot, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\LineBotSDK.2.0.1\lib\net45\LineBot.dll</HintPath>
     </Reference>
+    <Reference Include="Microsoft.AspNet.SignalR.Core, Version=2.4.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.SignalR.Core.2.4.1\lib\net45\Microsoft.AspNet.SignalR.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.AspNet.SignalR.SystemWeb, Version=2.4.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.SignalR.SystemWeb.2.4.1\lib\net45\Microsoft.AspNet.SignalR.SystemWeb.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.CSharp" />
+    <Reference Include="Microsoft.Owin, Version=4.0.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Owin.4.0.1\lib\net45\Microsoft.Owin.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Host.SystemWeb, Version=4.0.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Owin.Host.SystemWeb.4.0.1\lib\net45\Microsoft.Owin.Host.SystemWeb.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Security, Version=4.0.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Owin.Security.4.0.1\lib\net45\Microsoft.Owin.Security.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Web.Infrastructure, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Web.Infrastructure.1.0.0.0\lib\net40\Microsoft.Web.Infrastructure.dll</HintPath>
+    </Reference>
     <Reference Include="Newtonsoft.Json, Version=12.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
       <HintPath>..\packages\Newtonsoft.Json.12.0.2\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="Owin, Version=1.0.0.0, Culture=neutral, PublicKeyToken=f0ebd12fd5e55cc5, processorArchitecture=MSIL">
+      <HintPath>..\packages\Owin.1.0\lib\net40\Owin.dll</HintPath>
     </Reference>
     <Reference Include="PresentationCore" />
     <Reference Include="System.Data.Linq" />
@@ -109,6 +130,7 @@
     <Reference Include="System.Net.Http.Formatting, Version=5.2.7.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.AspNet.WebApi.Client.5.2.7\lib\net45\System.Net.Http.Formatting.dll</HintPath>
     </Reference>
+    <Reference Include="System.Net.Http.WebRequest" />
     <Reference Include="System.Security" />
     <Reference Include="System.Web.DynamicData" />
     <Reference Include="System.Web.Entity" />
@@ -148,15 +170,21 @@
     <Content Include="Content\images\Jcrop.gif" />
     <Content Include="Content\jquery.Jcrop.css" />
     <Content Include="Content\jquery.Jcrop.min.css" />
+    <Content Include="Global.asax" />
     <Content Include="Pages\Calculator.asmx" />
+    <Content Include="Pages\ClassToXml.aspx" />
     <Content Include="Pages\ExcelEPPlus.aspx" />
     <Content Include="Pages\FacebookCallback.aspx" />
     <Content Include="Pages\FacebookLogin.aspx" />
     <Content Include="Pages\GoogleOCR.aspx" />
     <Content Include="Pages\JCrop.aspx" />
+    <Content Include="Pages\LearningLIFF.aspx" />
+    <Content Include="Pages\LearningLIFF.html" />
+    <Content Include="Pages\LearningSignalR.aspx" />
     <Content Include="Pages\LineBot.aspx" />
     <Content Include="Pages\LineNotify.aspx" />
     <Content Include="Pages\ReCaptcha.aspx" />
+    <Content Include="Pages\SignalRWithGridview.aspx" />
     <Content Include="Pages\Thaibulksms.aspx" />
     <Content Include="Pages\WebForm1.aspx" />
     <Content Include="Scripts\bootstrap.bundle.js" />
@@ -182,13 +210,15 @@
     <Content Include="Content\bootstrap-grid.min.css.map" />
     <Content Include="Content\bootstrap-grid.css.map" />
     <None Include="Properties\PublishProfiles\FolderProfile.pubxml" />
-    <None Include="Scripts\jquery-3.0.0-vsdoc.js" />
-    <Content Include="Scripts\jquery-3.0.0.js" />
-    <Content Include="Scripts\jquery-3.0.0.min.js" />
-    <Content Include="Scripts\jquery-3.0.0.slim.js" />
-    <Content Include="Scripts\jquery-3.0.0.slim.min.js" />
+    <None Include="Scripts\jquery-3.4.1.intellisense.js" />
+    <Content Include="Scripts\jquery-3.4.1.js" />
+    <Content Include="Scripts\jquery-3.4.1.min.js" />
+    <Content Include="Scripts\jquery-3.4.1.slim.js" />
+    <Content Include="Scripts\jquery-3.4.1.slim.min.js" />
     <Content Include="Scripts\jquery.Jcrop.js" />
     <Content Include="Scripts\jquery.Jcrop.min.js" />
+    <Content Include="Scripts\jquery.signalR-2.4.1.js" />
+    <Content Include="Scripts\jquery.signalR-2.4.1.min.js" />
     <Content Include="Scripts\popper-utils.js" />
     <Content Include="Scripts\popper-utils.min.js" />
     <Content Include="Scripts\popper.js" />
@@ -200,15 +230,30 @@
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="App_Code\Startup.cs" />
+    <Compile Include="ChatHub.cs" />
+    <Compile Include="G.cs" />
+    <Compile Include="Global.asax.cs">
+      <DependentUpon>Global.asax</DependentUpon>
+    </Compile>
     <Compile Include="Learning.designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>Learning.dbml</DependentUpon>
     </Compile>
+    <Compile Include="Models\IASPS001_S.cs" />
+    <Compile Include="Models\ICRM018_S.cs" />
     <Compile Include="Models\ResponseLineNoti.cs" />
     <Compile Include="Pages\Calculator.asmx.cs">
       <DependentUpon>Calculator.asmx</DependentUpon>
       <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Pages\ClassToXml.aspx.cs">
+      <DependentUpon>ClassToXml.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Pages\ClassToXml.aspx.designer.cs">
+      <DependentUpon>ClassToXml.aspx</DependentUpon>
     </Compile>
     <Compile Include="Pages\ExcelEPPlus.aspx.cs">
       <DependentUpon>ExcelEPPlus.aspx</DependentUpon>
@@ -246,6 +291,20 @@
     <Compile Include="Pages\JCrop.aspx.designer.cs">
       <DependentUpon>JCrop.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Pages\LearningLIFF.aspx.cs">
+      <DependentUpon>LearningLIFF.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Pages\LearningLIFF.aspx.designer.cs">
+      <DependentUpon>LearningLIFF.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\LearningSignalR.aspx.cs">
+      <DependentUpon>LearningSignalR.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Pages\LearningSignalR.aspx.designer.cs">
+      <DependentUpon>LearningSignalR.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Pages\LineBot.aspx.cs">
       <DependentUpon>LineBot.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -267,6 +326,14 @@
     <Compile Include="Pages\ReCaptcha.aspx.designer.cs">
       <DependentUpon>ReCaptcha.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Pages\SignalRWithGridview.aspx.cs">
+      <DependentUpon>SignalRWithGridview.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Pages\SignalRWithGridview.aspx.designer.cs">
+      <DependentUpon>SignalRWithGridview.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\Snippet.cs" />
     <Compile Include="Pages\Thaibulksms.aspx.cs">
       <DependentUpon>Thaibulksms.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -282,6 +349,7 @@
       <DependentUpon>WebForm1.aspx</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="TreeHub.cs" />
     <Compile Include="ValuesController1.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -294,8 +362,6 @@
       <DependentUpon>Learning.dbml</DependentUpon>
     </None>
     <None Include="packages.config" />
-    <Content Include="Scripts\jquery-3.0.0.slim.min.map" />
-    <Content Include="Scripts\jquery-3.0.0.min.map" />
     <Content Include="Scripts\umd\popper.min.js.map" />
     <Content Include="Scripts\umd\popper.js.map" />
     <Content Include="Scripts\umd\popper-utils.min.js.map" />
@@ -305,6 +371,8 @@
     <Content Include="Scripts\popper.js.map" />
     <Content Include="Scripts\popper-utils.min.js.map" />
     <Content Include="Scripts\popper-utils.js.map" />
+    <Content Include="Scripts\jquery-3.4.1.slim.min.map" />
+    <Content Include="Scripts\jquery-3.4.1.min.map" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

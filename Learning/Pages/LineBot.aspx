@@ -10,8 +10,13 @@
     <form id="form1" runat="server">
         <div>
             BoardCast
-            <asp:TextBox ID="txtMessage" runat="server" Text="msg"></asp:TextBox>
+            Msg:<asp:TextBox ID="txtMessage" runat="server" Text="msg"></asp:TextBox><br />
             <asp:Button ID="btnSend" runat="server" Text="submit" OnClick="btnSend_Click"/>
+            <hr />
+            Send push message
+            UserId:<asp:TextBox ID="txtUserId" runat="server" Text="msg"></asp:TextBox><br />
+            Msg:<asp:TextBox ID="txtMsg" runat="server" Text="msg"></asp:TextBox><br />
+            <asp:Button ID="btnSendTo" runat="server" Text="submit" OnClick="btnSendTo_Click"/>
         </div>
     </form>
 </body>

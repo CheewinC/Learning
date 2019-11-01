@@ -131,6 +131,7 @@ Thanks :)*/
             <asp:Literal ID="ltrTree" runat="server"></asp:Literal>
             <button onclick="tt()" id="a">aa</button>
             <asp:Button ID="Button1" runat="server" Text="Button" OnClick="Button1_Click" />
+            <asp:TextBox ID="TextBox1" runat="server" TextMode="Time"></asp:TextBox>
         </div>
         <hr />
         <div>

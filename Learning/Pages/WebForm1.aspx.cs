@@ -20,6 +20,10 @@ namespace Learning.Pages
         {
             if (!IsPostBack)
             {
+                string results1 = Snippet.func(@"O V.7\nG ทะเบียนรถ - ต้นหาด้วย x\nX\\\nteqPZiWrvecli5fXLcpWEUQ%...\n2\nฎง 9999\nกรุงเทพมหานคร\nง)\nล\n");
+                string results2 = Snippet.func(@"8ณ-9174\nกรุงเทพมหานคร\n(Uส\nthaisecondhand.com\nThaiSecondhand แหล่งซื้อขายของมือสอง ขา\nมือสอง\n");
+                string results3 = Snippet.func(@"ณท.3368\nกรุงเทพมหานคร 0\n");
+
                 LearningDataContext db = new LearningDataContext();
                 Trees = db.Trees.ToList();
                 string result = CreateNote(0);
