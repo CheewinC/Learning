@@ -21,10 +21,13 @@
         deviceOS :<h1><asp:Label ID="lblDeviceOS" runat="server"></asp:Label></h1>
         <hr />
         userIdProfileField :<h1><asp:Label ID="lblUserIdProfileField" runat="server"></asp:Label></h1>
-        <asp:HiddenField ID="hdnUserIdProfileField" runat="server" />
         displayNameField :<h1><asp:Label ID="lblDisplayNameField" runat="server"></asp:Label></h1>
         profilePictureDiv :<h1><asp:Label ID="lblProfilePictureDiv" runat="server"></asp:Label></h1>
         statusMessageField :<h1><asp:Label ID="lblStatusMessageField" runat="server"></asp:Label></h1>
+        <asp:HiddenField ID="hdnUserIdProfileField" runat="server" />
+        <asp:HiddenField ID="hdnDisplayNameField" runat="server" />
+        <asp:HiddenField ID="hdnProfilePictureDiv" runat="server" />
+        <asp:HiddenField ID="hdnStatusMessageField" runat="server" />
         <script src="https://res.wx.qq.com/mmbizwap/zh_CN/htmledition/js/vconsole/3.0.0/vconsole.min.js"></script>
         <script>var vConsole = new VConsole();</script>
         <script src="../Scripts/jquery-3.4.1.min.js"></script>
@@ -64,8 +67,12 @@
 
             function getProfile() {
                 liff.getProfile().then(function (profile) {
-                    document.getElementById('<%=lblUserIdProfileField.ClientID %>').innerHTML = profile.userId;
                     document.getElementById('<%=hdnUserIdProfileField.ClientID %>').value = profile.userId;
+                    document.getElementById('<%=hdnDisplayNameField.ClientID %>').value = profile.displayName;
+                    document.getElementById('<%=hdnProfilePictureDiv.ClientID %>').value = profile.pictureUrl;
+                    document.getElementById('<%=hdnStatusMessageField.ClientID %>').value = profile.statusMessage;
+
+                    document.getElementById('<%=lblUserIdProfileField.ClientID %>').innerHTML = profile.userId;
                     document.getElementById('<%=lblDisplayNameField.ClientID %>').innerHTML = profile.displayName;
 
                     const profilePictureDiv = document.getElementById('<%=lblProfilePictureDiv.ClientID %>');

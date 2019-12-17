@@ -18,6 +18,13 @@ namespace Learning.Pages
 
         protected void Page_Load(object sender, EventArgs e)
         {
+            string hm = "1904";
+            string hhmm = hm.Insert(2, ":");
+            TimeSpan timeSpan = TimeSpan.Parse(hhmm);
+            TimeSpan timeSpan2 = TimeSpan.Parse("02:12");
+            bool a = timeSpan > timeSpan2;
+
+
             if (!IsPostBack)
             {
                 string results1 = Snippet.func(@"O V.7\nG ทะเบียนรถ - ต้นหาด้วย x\nX\\\nteqPZiWrvecli5fXLcpWEUQ%...\n2\nฎง 9999\nกรุงเทพมหานคร\nง)\nล\n");

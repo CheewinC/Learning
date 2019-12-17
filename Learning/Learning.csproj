@@ -118,6 +118,9 @@
     <Reference Include="Newtonsoft.Json, Version=12.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
       <HintPath>..\packages\Newtonsoft.Json.12.0.2\lib\net45\Newtonsoft.Json.dll</HintPath>
     </Reference>
+    <Reference Include="Oracle.ManagedDataAccess, Version=4.122.19.1, Culture=neutral, PublicKeyToken=89b483f429c47342, processorArchitecture=MSIL">
+      <HintPath>..\packages\Oracle.ManagedDataAccess.19.5.0\lib\net40\Oracle.ManagedDataAccess.dll</HintPath>
+    </Reference>
     <Reference Include="Owin, Version=1.0.0.0, Culture=neutral, PublicKeyToken=f0ebd12fd5e55cc5, processorArchitecture=MSIL">
       <HintPath>..\packages\Owin.1.0\lib\net40\Owin.dll</HintPath>
     </Reference>
@@ -170,7 +173,11 @@
     <Content Include="Content\images\Jcrop.gif" />
     <Content Include="Content\jquery.Jcrop.css" />
     <Content Include="Content\jquery.Jcrop.min.css" />
+    <Content Include="Content\magnific-popup.css" />
     <Content Include="Global.asax" />
+    <Content Include="images\AgentDefault.jpg" />
+    <Content Include="images\BgHome.jpg" />
+    <Content Include="images\InformationTPA.png" />
     <Content Include="Pages\Calculator.asmx" />
     <Content Include="Pages\ClassToXml.aspx" />
     <Content Include="Pages\ExcelEPPlus.aspx" />
@@ -183,6 +190,7 @@
     <Content Include="Pages\LearningSignalR.aspx" />
     <Content Include="Pages\LineBot.aspx" />
     <Content Include="Pages\LineNotify.aspx" />
+    <Content Include="Pages\MagnificLightBox.aspx" />
     <Content Include="Pages\ReCaptcha.aspx" />
     <Content Include="Pages\SignalRWithGridview.aspx" />
     <Content Include="Pages\Thaibulksms.aspx" />
@@ -217,6 +225,8 @@
     <Content Include="Scripts\jquery-3.4.1.slim.min.js" />
     <Content Include="Scripts\jquery.Jcrop.js" />
     <Content Include="Scripts\jquery.Jcrop.min.js" />
+    <Content Include="Scripts\jquery.magnific-popup.js" />
+    <Content Include="Scripts\jquery.magnific-popup.min.js" />
     <Content Include="Scripts\jquery.signalR-2.4.1.js" />
     <Content Include="Scripts\jquery.signalR-2.4.1.min.js" />
     <Content Include="Scripts\popper-utils.js" />
@@ -319,6 +329,13 @@
     <Compile Include="Pages\LineNotify.aspx.designer.cs">
       <DependentUpon>LineNotify.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Pages\MagnificLightBox.aspx.cs">
+      <DependentUpon>MagnificLightBox.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Pages\MagnificLightBox.aspx.designer.cs">
+      <DependentUpon>MagnificLightBox.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Pages\ReCaptcha.aspx.cs">
       <DependentUpon>ReCaptcha.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -387,9 +404,7 @@
   <ItemGroup>
     <TypeScriptCompile Include="Scripts\index.d.ts" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="images\" />
-  </ItemGroup>
+  <ItemGroup />
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
     <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>

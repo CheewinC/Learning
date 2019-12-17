@@ -2,6 +2,7 @@
 using Line.Messaging.Webhooks;
 using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
@@ -29,7 +30,7 @@ namespace LearningLineBotApp
             switch (ev.Message.Type)
             {
                 case EventMessageType.Text:
-                    await HandleTextAsync(ev.ReplyToken, ((TextEventMessage)ev.Message).Text, ev.Source.UserId);
+                    await HandleTextAsync(ev.ReplyToken, ((TextEventMessage)ev.Message).Text, ev.Source.UserId, ev.Timestamp);
                     break;
                 case EventMessageType.Image:
                 case EventMessageType.Audio:
@@ -82,6 +83,8 @@ namespace LearningLineBotApp
             {
                 var userProfile = await messagingClient.GetUserProfileAsync(ev.Source.Id);
                 userName = userProfile?.DisplayName ?? "";
+
+                UpdateLineUser(userProfile);
             }
 
             await messagingClient.ReplyMessageAsync(ev.ReplyToken, $"Hello {userName}! Thank you for following !");
@@ -124,8 +127,25 @@ namespace LearningLineBotApp
 
         #endregion
 
-        private async Task HandleTextAsync(string replyToken, string userMessage, string userId)
+        private async Task HandleTextAsync(string replyToken, string userMessage, string userId, long timestamp)
         {
+
+            DataClasses1DataContext db = new DataClasses1DataContext();
+            DateTime dateTime = new DateTime(1970, 1, 1, 0, 0, 0, 0, DateTimeKind.Utc).AddMilliseconds(timestamp).ToLocalTime();
+            db.LineMessageLogs.InsertOnSubmit(new LineMessageLog
+            {
+                ReplyToken = replyToken,
+                Timestamp = dateTime,
+                UserId = userId,
+                Text = userMessage
+            });
+            db.SubmitChanges();
+
+
+            var userProfile = await messagingClient.GetUserProfileAsync(userId);
+            UpdateLineUser(userProfile);
+
+
             userMessage = userMessage.ToLower().Replace(" ", "");
             ISendMessage replyMessage = null;
             if (userMessage == "buttons")
@@ -322,6 +342,35 @@ namespace LearningLineBotApp
                 default:
                     return "";
             }
+        }
+
+        private void UpdateLineUser(UserProfile userProfile)
+        {
+            DataClasses1DataContext db = new DataClasses1DataContext();
+            var found = db.LineUsers.SingleOrDefault(x => x.LineUserId == userProfile.UserId);
+            if (found == null)
+            {
+                db.LineUsers.InsertOnSubmit(new LineUser
+                {
+                    LineUserId = userProfile.UserId,
+                    DisplayName = userProfile.DisplayName,
+                    ProfilePicture = userProfile.PictureUrl,
+                    StatusMessage = userProfile.StatusMessage,
+                    CreateDate = DateTime.Now
+                });
+            }
+            else
+            {
+                if (found.DisplayName != userProfile.DisplayName || found.ProfilePicture != userProfile.PictureUrl
+                    || found.StatusMessage != userProfile.StatusMessage)
+                {
+                    found.DisplayName = userProfile.DisplayName;
+                    found.ProfilePicture = userProfile.PictureUrl;
+                    found.StatusMessage = userProfile.StatusMessage;
+                    found.ModifyDate = DateTime.Now;
+                }
+            }
+            db.SubmitChanges();
         }
     }
 }

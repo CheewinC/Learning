@@ -94,15 +94,6 @@ namespace Learning.Pages {
         protected global::System.Web.UI.WebControls.Label lblUserIdProfileField;
         
         /// <summary>
-        /// hdnUserIdProfileField control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.HiddenField hdnUserIdProfileField;
-        
-        /// <summary>
         /// lblDisplayNameField control.
         /// </summary>
         /// <remarks>
@@ -128,5 +119,41 @@ namespace Learning.Pages {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label lblStatusMessageField;
+        
+        /// <summary>
+        /// hdnUserIdProfileField control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.HiddenField hdnUserIdProfileField;
+        
+        /// <summary>
+        /// hdnDisplayNameField control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.HiddenField hdnDisplayNameField;
+        
+        /// <summary>
+        /// hdnProfilePictureDiv control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.HiddenField hdnProfilePictureDiv;
+        
+        /// <summary>
+        /// hdnStatusMessageField control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.HiddenField hdnStatusMessageField;
     }
 }

@@ -36,6 +36,9 @@ namespace LearningLineBotApp
     partial void InsertLineUser(LineUser instance);
     partial void UpdateLineUser(LineUser instance);
     partial void DeleteLineUser(LineUser instance);
+    partial void InsertLineMessageLog(LineMessageLog instance);
+    partial void UpdateLineMessageLog(LineMessageLog instance);
+    partial void DeleteLineMessageLog(LineMessageLog instance);
     #endregion
 		
 		public DataClasses1DataContext() : 
@@ -81,6 +84,14 @@ namespace LearningLineBotApp
 			get
 			{
 				return this.GetTable<LineUser>();
+			}
+		}
+		
+		public System.Data.Linq.Table<LineMessageLog> LineMessageLogs
+		{
+			get
+			{
+				return this.GetTable<LineMessageLog>();
 			}
 		}
 	}
@@ -179,9 +190,17 @@ namespace LearningLineBotApp
 		
 		private string _LineUserId;
 		
+		private string _DisplayName;
+		
+		private string _ProfilePicture;
+		
+		private string _StatusMessage;
+		
 		private string _MobileNo;
 		
 		private System.Nullable<System.DateTime> _CreateDate;
+		
+		private System.Nullable<System.DateTime> _ModifyDate;
 		
     #region Extensibility Method Definitions
     partial void OnLoaded();
@@ -189,10 +208,18 @@ namespace LearningLineBotApp
     partial void OnCreated();
     partial void OnLineUserIdChanging(string value);
     partial void OnLineUserIdChanged();
+    partial void OnDisplayNameChanging(string value);
+    partial void OnDisplayNameChanged();
+    partial void OnProfilePictureChanging(string value);
+    partial void OnProfilePictureChanged();
+    partial void OnStatusMessageChanging(string value);
+    partial void OnStatusMessageChanged();
     partial void OnMobileNoChanging(string value);
     partial void OnMobileNoChanged();
     partial void OnCreateDateChanging(System.Nullable<System.DateTime> value);
     partial void OnCreateDateChanged();
+    partial void OnModifyDateChanging(System.Nullable<System.DateTime> value);
+    partial void OnModifyDateChanged();
     #endregion
 		
 		public LineUser()
@@ -216,6 +243,66 @@ namespace LearningLineBotApp
 					this._LineUserId = value;
 					this.SendPropertyChanged("LineUserId");
 					this.OnLineUserIdChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_DisplayName", DbType="VarChar(500)")]
+		public string DisplayName
+		{
+			get
+			{
+				return this._DisplayName;
+			}
+			set
+			{
+				if ((this._DisplayName != value))
+				{
+					this.OnDisplayNameChanging(value);
+					this.SendPropertyChanging();
+					this._DisplayName = value;
+					this.SendPropertyChanged("DisplayName");
+					this.OnDisplayNameChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ProfilePicture", DbType="VarChar(500)")]
+		public string ProfilePicture
+		{
+			get
+			{
+				return this._ProfilePicture;
+			}
+			set
+			{
+				if ((this._ProfilePicture != value))
+				{
+					this.OnProfilePictureChanging(value);
+					this.SendPropertyChanging();
+					this._ProfilePicture = value;
+					this.SendPropertyChanged("ProfilePicture");
+					this.OnProfilePictureChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_StatusMessage", DbType="VarChar(500)")]
+		public string StatusMessage
+		{
+			get
+			{
+				return this._StatusMessage;
+			}
+			set
+			{
+				if ((this._StatusMessage != value))
+				{
+					this.OnStatusMessageChanging(value);
+					this.SendPropertyChanging();
+					this._StatusMessage = value;
+					this.SendPropertyChanged("StatusMessage");
+					this.OnStatusMessageChanged();
 				}
 			}
 		}
@@ -256,6 +343,184 @@ namespace LearningLineBotApp
 					this._CreateDate = value;
 					this.SendPropertyChanged("CreateDate");
 					this.OnCreateDateChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ModifyDate", DbType="DateTime")]
+		public System.Nullable<System.DateTime> ModifyDate
+		{
+			get
+			{
+				return this._ModifyDate;
+			}
+			set
+			{
+				if ((this._ModifyDate != value))
+				{
+					this.OnModifyDateChanging(value);
+					this.SendPropertyChanging();
+					this._ModifyDate = value;
+					this.SendPropertyChanged("ModifyDate");
+					this.OnModifyDateChanged();
+				}
+			}
+		}
+		
+		public event PropertyChangingEventHandler PropertyChanging;
+		
+		public event PropertyChangedEventHandler PropertyChanged;
+		
+		protected virtual void SendPropertyChanging()
+		{
+			if ((this.PropertyChanging != null))
+			{
+				this.PropertyChanging(this, emptyChangingEventArgs);
+			}
+		}
+		
+		protected virtual void SendPropertyChanged(String propertyName)
+		{
+			if ((this.PropertyChanged != null))
+			{
+				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+			}
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.LineMessageLog")]
+	public partial class LineMessageLog : INotifyPropertyChanging, INotifyPropertyChanged
+	{
+		
+		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
+		
+		private int _Id;
+		
+		private string _ReplyToken;
+		
+		private System.Nullable<System.DateTime> _Timestamp;
+		
+		private string _UserId;
+		
+		private string _Text;
+		
+    #region Extensibility Method Definitions
+    partial void OnLoaded();
+    partial void OnValidate(System.Data.Linq.ChangeAction action);
+    partial void OnCreated();
+    partial void OnIdChanging(int value);
+    partial void OnIdChanged();
+    partial void OnReplyTokenChanging(string value);
+    partial void OnReplyTokenChanged();
+    partial void OnTimestampChanging(System.Nullable<System.DateTime> value);
+    partial void OnTimestampChanged();
+    partial void OnUserIdChanging(string value);
+    partial void OnUserIdChanged();
+    partial void OnTextChanging(string value);
+    partial void OnTextChanged();
+    #endregion
+		
+		public LineMessageLog()
+		{
+			OnCreated();
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Id", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
+		public int Id
+		{
+			get
+			{
+				return this._Id;
+			}
+			set
+			{
+				if ((this._Id != value))
+				{
+					this.OnIdChanging(value);
+					this.SendPropertyChanging();
+					this._Id = value;
+					this.SendPropertyChanged("Id");
+					this.OnIdChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ReplyToken", DbType="VarChar(500)")]
+		public string ReplyToken
+		{
+			get
+			{
+				return this._ReplyToken;
+			}
+			set
+			{
+				if ((this._ReplyToken != value))
+				{
+					this.OnReplyTokenChanging(value);
+					this.SendPropertyChanging();
+					this._ReplyToken = value;
+					this.SendPropertyChanged("ReplyToken");
+					this.OnReplyTokenChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Timestamp", DbType="DateTime")]
+		public System.Nullable<System.DateTime> Timestamp
+		{
+			get
+			{
+				return this._Timestamp;
+			}
+			set
+			{
+				if ((this._Timestamp != value))
+				{
+					this.OnTimestampChanging(value);
+					this.SendPropertyChanging();
+					this._Timestamp = value;
+					this.SendPropertyChanged("Timestamp");
+					this.OnTimestampChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_UserId", DbType="VarChar(500)")]
+		public string UserId
+		{
+			get
+			{
+				return this._UserId;
+			}
+			set
+			{
+				if ((this._UserId != value))
+				{
+					this.OnUserIdChanging(value);
+					this.SendPropertyChanging();
+					this._UserId = value;
+					this.SendPropertyChanged("UserId");
+					this.OnUserIdChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Text", DbType="VarChar(500)")]
+		public string Text
+		{
+			get
+			{
+				return this._Text;
+			}
+			set
+			{
+				if ((this._Text != value))
+				{
+					this.OnTextChanging(value);
+					this.SendPropertyChanging();
+					this._Text = value;
+					this.SendPropertyChanged("Text");
+					this.OnTextChanged();
 				}
 			}
 		}

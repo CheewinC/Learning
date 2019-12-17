@@ -9,8 +9,21 @@
   <Table Name="dbo.LineUser" Member="LineUsers">
     <Type Name="LineUser">
       <Column Name="LineUserId" Type="System.String" DbType="VarChar(500) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="DisplayName" Type="System.String" DbType="VarChar(500)" CanBeNull="true" />
+      <Column Name="ProfilePicture" Type="System.String" DbType="VarChar(500)" CanBeNull="true" />
+      <Column Name="StatusMessage" Type="System.String" DbType="VarChar(500)" CanBeNull="true" />
       <Column Name="MobileNo" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
       <Column Name="CreateDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="ModifyDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.LineMessageLog" Member="LineMessageLogs">
+    <Type Name="LineMessageLog">
+      <Column Name="Id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="ReplyToken" Type="System.String" DbType="VarChar(500)" CanBeNull="true" />
+      <Column Name="Timestamp" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="UserId" Type="System.String" DbType="VarChar(500)" CanBeNull="true" />
+      <Column Name="Text" Type="System.String" DbType="VarChar(500)" CanBeNull="true" />
     </Type>
   </Table>
 </Database>

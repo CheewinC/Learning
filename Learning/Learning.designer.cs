@@ -83,6 +83,14 @@ namespace Learning
 				return this.GetTable<LineUser>();
 			}
 		}
+		
+		public System.Data.Linq.Table<v_UserLineMessageLog> v_UserLineMessageLogs
+		{
+			get
+			{
+				return this.GetTable<v_UserLineMessageLog>();
+			}
+		}
 	}
 	
 	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.Tree")]
@@ -203,9 +211,17 @@ namespace Learning
 		
 		private string _LineUserId;
 		
+		private string _DisplayName;
+		
+		private string _ProfilePicture;
+		
+		private string _StatusMessage;
+		
 		private string _MobileNo;
 		
 		private System.Nullable<System.DateTime> _CreateDate;
+		
+		private System.Nullable<System.DateTime> _ModifyDate;
 		
     #region Extensibility Method Definitions
     partial void OnLoaded();
@@ -213,10 +229,18 @@ namespace Learning
     partial void OnCreated();
     partial void OnLineUserIdChanging(string value);
     partial void OnLineUserIdChanged();
+    partial void OnDisplayNameChanging(string value);
+    partial void OnDisplayNameChanged();
+    partial void OnProfilePictureChanging(string value);
+    partial void OnProfilePictureChanged();
+    partial void OnStatusMessageChanging(string value);
+    partial void OnStatusMessageChanged();
     partial void OnMobileNoChanging(string value);
     partial void OnMobileNoChanged();
     partial void OnCreateDateChanging(System.Nullable<System.DateTime> value);
     partial void OnCreateDateChanged();
+    partial void OnModifyDateChanging(System.Nullable<System.DateTime> value);
+    partial void OnModifyDateChanged();
     #endregion
 		
 		public LineUser()
@@ -240,6 +264,66 @@ namespace Learning
 					this._LineUserId = value;
 					this.SendPropertyChanged("LineUserId");
 					this.OnLineUserIdChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_DisplayName", DbType="VarChar(500)")]
+		public string DisplayName
+		{
+			get
+			{
+				return this._DisplayName;
+			}
+			set
+			{
+				if ((this._DisplayName != value))
+				{
+					this.OnDisplayNameChanging(value);
+					this.SendPropertyChanging();
+					this._DisplayName = value;
+					this.SendPropertyChanged("DisplayName");
+					this.OnDisplayNameChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ProfilePicture", DbType="VarChar(500)")]
+		public string ProfilePicture
+		{
+			get
+			{
+				return this._ProfilePicture;
+			}
+			set
+			{
+				if ((this._ProfilePicture != value))
+				{
+					this.OnProfilePictureChanging(value);
+					this.SendPropertyChanging();
+					this._ProfilePicture = value;
+					this.SendPropertyChanged("ProfilePicture");
+					this.OnProfilePictureChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_StatusMessage", DbType="VarChar(500)")]
+		public string StatusMessage
+		{
+			get
+			{
+				return this._StatusMessage;
+			}
+			set
+			{
+				if ((this._StatusMessage != value))
+				{
+					this.OnStatusMessageChanging(value);
+					this.SendPropertyChanging();
+					this._StatusMessage = value;
+					this.SendPropertyChanged("StatusMessage");
+					this.OnStatusMessageChanged();
 				}
 			}
 		}
@@ -284,6 +368,26 @@ namespace Learning
 			}
 		}
 		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ModifyDate", DbType="DateTime")]
+		public System.Nullable<System.DateTime> ModifyDate
+		{
+			get
+			{
+				return this._ModifyDate;
+			}
+			set
+			{
+				if ((this._ModifyDate != value))
+				{
+					this.OnModifyDateChanging(value);
+					this.SendPropertyChanging();
+					this._ModifyDate = value;
+					this.SendPropertyChanged("ModifyDate");
+					this.OnModifyDateChanged();
+				}
+			}
+		}
+		
 		public event PropertyChangingEventHandler PropertyChanging;
 		
 		public event PropertyChangedEventHandler PropertyChanged;
@@ -301,6 +405,213 @@ namespace Learning
 			if ((this.PropertyChanged != null))
 			{
 				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+			}
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.v_UserLineMessageLog")]
+	public partial class v_UserLineMessageLog
+	{
+		
+		private int _Id;
+		
+		private string _ReplyToken;
+		
+		private System.Nullable<System.DateTime> _Timestamp;
+		
+		private string _UserId;
+		
+		private string _Text;
+		
+		private string _DisplayName;
+		
+		private string _ProfilePicture;
+		
+		private string _StatusMessage;
+		
+		private string _MobileNo;
+		
+		private System.Nullable<System.DateTime> _CreateDate;
+		
+		private System.Nullable<System.DateTime> _ModifyDate;
+		
+		public v_UserLineMessageLog()
+		{
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Id", DbType="Int NOT NULL")]
+		public int Id
+		{
+			get
+			{
+				return this._Id;
+			}
+			set
+			{
+				if ((this._Id != value))
+				{
+					this._Id = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ReplyToken", DbType="VarChar(500)")]
+		public string ReplyToken
+		{
+			get
+			{
+				return this._ReplyToken;
+			}
+			set
+			{
+				if ((this._ReplyToken != value))
+				{
+					this._ReplyToken = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Timestamp", DbType="DateTime")]
+		public System.Nullable<System.DateTime> Timestamp
+		{
+			get
+			{
+				return this._Timestamp;
+			}
+			set
+			{
+				if ((this._Timestamp != value))
+				{
+					this._Timestamp = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_UserId", DbType="VarChar(500)")]
+		public string UserId
+		{
+			get
+			{
+				return this._UserId;
+			}
+			set
+			{
+				if ((this._UserId != value))
+				{
+					this._UserId = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Text", DbType="VarChar(500)")]
+		public string Text
+		{
+			get
+			{
+				return this._Text;
+			}
+			set
+			{
+				if ((this._Text != value))
+				{
+					this._Text = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_DisplayName", DbType="VarChar(500)")]
+		public string DisplayName
+		{
+			get
+			{
+				return this._DisplayName;
+			}
+			set
+			{
+				if ((this._DisplayName != value))
+				{
+					this._DisplayName = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ProfilePicture", DbType="VarChar(500)")]
+		public string ProfilePicture
+		{
+			get
+			{
+				return this._ProfilePicture;
+			}
+			set
+			{
+				if ((this._ProfilePicture != value))
+				{
+					this._ProfilePicture = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_StatusMessage", DbType="VarChar(500)")]
+		public string StatusMessage
+		{
+			get
+			{
+				return this._StatusMessage;
+			}
+			set
+			{
+				if ((this._StatusMessage != value))
+				{
+					this._StatusMessage = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_MobileNo", DbType="VarChar(100)")]
+		public string MobileNo
+		{
+			get
+			{
+				return this._MobileNo;
+			}
+			set
+			{
+				if ((this._MobileNo != value))
+				{
+					this._MobileNo = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_CreateDate", DbType="DateTime")]
+		public System.Nullable<System.DateTime> CreateDate
+		{
+			get
+			{
+				return this._CreateDate;
+			}
+			set
+			{
+				if ((this._CreateDate != value))
+				{
+					this._CreateDate = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ModifyDate", DbType="DateTime")]
+		public System.Nullable<System.DateTime> ModifyDate
+		{
+			get
+			{
+				return this._ModifyDate;
+			}
+			set
+			{
+				if ((this._ModifyDate != value))
+				{
+					this._ModifyDate = value;
+				}
 			}
 		}
 	}

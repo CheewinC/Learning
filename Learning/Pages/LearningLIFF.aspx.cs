@@ -19,20 +19,38 @@ namespace Learning.Pages
             try
             {
                 LearningDataContext db = new LearningDataContext();
+                string userId = hdnUserIdProfileField.Value;
+                string displayName = hdnDisplayNameField.Value;
+                string profilePicture = hdnProfilePictureDiv.Value;
+                string statusMessage = hdnStatusMessageField.Value;
 
-                var found = db.LineUsers.SingleOrDefault(x => x.LineUserId == hdnUserIdProfileField.Value);
+                var found = db.LineUsers.SingleOrDefault(x => x.LineUserId == userId);
                 if (found == null)
                 {
                     db.LineUsers.InsertOnSubmit(new LineUser
                     {
-                        LineUserId = hdnUserIdProfileField.Value,
+                        LineUserId = userId,
+                        DisplayName = displayName,
+                        ProfilePicture = profilePicture,
+                        StatusMessage = statusMessage,
                         MobileNo = txtMobileNo.Text,
                         CreateDate = DateTime.Now
                     });
                 }
                 else
-                    found.MobileNo = txtMobileNo.Text;
+                {
+                    if (found.DisplayName != displayName || found.ProfilePicture != profilePicture 
+                        || found.StatusMessage != statusMessage || found.MobileNo != txtMobileNo.Text)
+                    {
+                        found.DisplayName = displayName;
+                        found.ProfilePicture = profilePicture;
+                        found.StatusMessage = statusMessage;
+                        found.MobileNo = txtMobileNo.Text;
+                        found.ModifyDate = DateTime.Now;
+                    }
+                }
                 db.SubmitChanges();
+
                 G.Alert(this, "Success");
                 var script = @"liff.init({liffId: ""1614834775-a0mOA8vd""}).then(() => {liff.closeWindow();});";
                 Page.ClientScript.RegisterStartupScript(this.GetType(), "CallMyFunction", script, true);
